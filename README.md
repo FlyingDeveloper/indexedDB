@@ -5,7 +5,7 @@ This is an attempt to learn a bit about indexedDB.
 ## Goals
 
 1. Create a basic DB connection and store/retrieve a string
-1. Store/retrieve a simple object (if that's possible)
+1. Store/retrieve a simple object
 1. Store/retrieve a more complex object
 1. Check to see if an object exists in the DB.
   1. If the object is in the DB:
