@@ -10,28 +10,33 @@ openRequest.onerror = function(event) {
 openRequest.onsuccess = function(event) {
     var db = event.target.result;
     var objectStore = db.transaction([objectStoreName]).objectStore(objectStoreName);
-    var dataRequest = objectStore.get('Redmond');
+    var dataRequest = objectStore.get('Gates');
     dataRequest.onsuccess = function(event) {
-        var person = dataRequest.result;
-        document.getElementById('output').innerText = person.firstName + ' ' + person.lastName;
+        if (dataRequest.result !== undefined) {
+            var person = dataRequest.result;
+            populateForm(person);
+        } else {
+            $.ajax(
+                'http://localhost:20380/',
+                {
+                    ifModified: true
+                }
+            ).then(function(data) {
+                populateForm(data);
+                var objectStore = db.transaction([objectStoreName], 'readwrite').objectStore(objectStoreName);
+                objectStore.add(data);
+            });
+        }
     };
 };
+
+function populateForm(person) {
+    document.getElementById('output').innerText = person.firstName + ' ' + person.lastName;
+}
 
 openRequest.onupgradeneeded = function(event) {
     var db = event.target.result;
     if (!db.objectStoreNames.contains(objectStoreName)) {
-        var objectStore = db.createObjectStore(objectStoreName, { keyPath: 'address.city' });
-        objectStore.transaction.oncomplete = function(event) {
-            var myObjectStore = db.transaction([objectStoreName], 'readwrite').objectStore(objectStoreName);
-            var person = {
-                firstName: 'Bill',
-                lastName: 'Gates',
-                address: {
-                    city: 'Redmond',
-                    state: 'WA'
-                }
-            }
-            myObjectStore.add(person);
-        };
+        db.createObjectStore(objectStoreName, { keyPath: 'lastName' });
     }
 };

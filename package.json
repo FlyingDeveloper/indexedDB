@@ -1,0 +1,27 @@
+{
+  "name": "indexedDB",
+  "version": "1.0.0",
+  "description": "This is an attempt to learn a bit about indexedDB.",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "tsc",
+    "start": "node dist/src/back-end/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FlyingDeveloper/indexedDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlyingDeveloper/indexedDB/issues"
+  },
+  "homepage": "https://github.com/FlyingDeveloper/indexedDB",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "tsd": "^0.6.5",
+    "typescript": "^1.7.5"
+  }
+}
