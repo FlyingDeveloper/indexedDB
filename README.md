@@ -33,3 +33,12 @@ will run client side, in the browser.
 
 The `back-end` directory will contain the service code that provides
 the data used during milestone 4.
+
+----
+
+## This project's work is complete
+
+A quick update here. After completing Milestone 4, I had enough of an
+understanding of indexedDB to move forward with implementation in a
+production app so this project's job is complete. Completing Milestone5
+was not necessary to expand my understanding of indexedDB.
